@@ -6,12 +6,14 @@ const api = express();
 api.use(bodyParser.json())
 
 const router = Router();
-router.post("/api/webhook", (req, res) => {
+router.post("/webhook", (req, res) => {
   processWebhookNotificationData(req.body);
   res.send({
     webhookDataProcessed: 'success',
   })
 });
+
+api.use("/api/", router);
 
 const processWebhookNotificationData = (data) => {
   // TODO: You will have to implement the logic of this method.
