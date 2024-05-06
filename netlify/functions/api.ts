@@ -3,9 +3,11 @@ import serverless from "serverless-http";
 import bodyParser from "body-parser";
 
 const api = express();
-api.use(bodyParser.json())
-
 const router = Router();
+
+api.use(bodyParser.json())
+router.get("/hello", (req, res) => res.send("Hello World!"));
+
 router.post("/webhook", (req, res) => {
   processWebhookNotificationData(req.body);
   res.send({
