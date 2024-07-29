@@ -9,6 +9,8 @@ api.use(bodyParser.json())
 router.get("/hello", (req, res) => res.send("Hello World!"));
 
 router.post("/webhook", (req, res) => {
+  console.log(`headers`);
+  console.log(req);
   processWebhookNotificationData(req.body);
   res.send({
     webhookDataProcessed: 'success',
